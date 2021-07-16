@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 # Create your models here.
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
@@ -12,6 +13,10 @@ from accountapp.forms import AccountUpdateForm
 
 has_ownership = [account_ownership_required, login_required()]
 
+# BaaN 임시 메인 페이지
+def BaaN_main(request):
+    return render(request, 'accountapp/main.html')
+########################################
 
 class AccountCreateView(CreateView):
     model = User
