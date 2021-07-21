@@ -14,6 +14,8 @@ from pathlib import Path
 import os, environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.urls import reverse_lazy
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -66,6 +68,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4',
     'accountapp',
     'memoapp',
     'bookmarkapp',
@@ -170,3 +173,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# login&logout redirect
+LOGIN_REDIRECT_URL = reverse_lazy('accountapp:main')
+LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')

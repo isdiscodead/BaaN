@@ -7,8 +7,4 @@ from bookmarkapp import views
 app_name = 'bookmarkapp'
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    # url(r'^$', views.home),
-    # url(r'^detail$', views.detail),
-
 ]
