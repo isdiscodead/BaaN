@@ -37,11 +37,5 @@ class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
     success_url = reverse_lazy('accountapp:login')
-<<<<<<< HEAD
     template_name = 'accountapp/delete.html'
-=======
     template_name = 'accountapp/delete.html'
-
-
-
->>>>>>> 7ccda51b8c1b77a860219a871d3b15b3665b6f15

@@ -74,7 +74,6 @@ INSTALLED_APPS = [
     'calendarapp',
     'todoapp',
     'memoapp',
-    'bootstrap4',
     'django_summernote',
 ]
 
@@ -177,10 +176,9 @@ SUMMERNOTE_CONFIG = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-<<<<<<< HEAD
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-=======
+
 # login&logout redirect
 LOGIN_REDIRECT_URL = reverse_lazy('accountapp:main')
 LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
->>>>>>> 7ccda51b8c1b77a860219a871d3b15b3665b6f15
+
