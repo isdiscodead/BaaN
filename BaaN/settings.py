@@ -67,10 +67,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accountapp',
-    'memoapp',
     'bookmarkapp',
     'calendarapp',
     'todoapp',
+    'memoapp',
+    'bootstrap4',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -164,9 +166,12 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 # 서버에 올렸을 때 collect 되는 local dir
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
+SUMMERNOTE_CONFIG = {
+    # 'disable_attachment': True,
+    }
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'

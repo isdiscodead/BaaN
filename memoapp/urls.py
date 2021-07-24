@@ -1,8 +1,14 @@
+import patterns as patterns
+from django.conf.urls import url
 from django.urls import path
 
-from memoapp.views import MemoListView, MemoCreateView, MemoDetailView, MemoUpdateView, MemoDeleteView
+from memoapp import views
+from memoapp.views import MemoCreateView, MemoDetailView, MemoDeleteView, MemoListView, MemoUpdateView
+
+# MemoListView, MemoCreateView, MemoDetailView, MemoUpdateView, MemoDeleteView
 
 app_name = 'memoapp'
+
 
 urlpatterns = [
     path('list/', MemoListView.as_view(), name='list'),

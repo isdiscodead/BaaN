@@ -1,9 +1,13 @@
-from django.forms import ModelForm
+from django import forms
+from django_summernote.widgets import SummernoteWidget
 
 from memoapp.models import Memo
 
 
-class MemoCreationForm(ModelForm):
+class MemoForm(forms.ModelForm):
     class Meta:
         model = Memo
-        fields = ['title', 'content', 'image']
+        fields = ['title', 'content']
+        widgets = {
+            'content' : SummernoteWidget(),
+        }

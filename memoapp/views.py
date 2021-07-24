@@ -1,56 +1,38 @@
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render
-
-# Create your views here.
+from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views.generic import CreateView, DetailView, ListView
-from django.views.generic.edit import FormMixin, UpdateView, DeleteView
+from django.views.generic import CreateView, DetailView, DeleteView, ListView, UpdateView
 
-from memoapp.decorators import memo_ownership_required
-from memoapp.forms import MemoCreationForm
+from memoapp.forms import MemoForm
+
+# def MemoView(request):
+#     form = MemoForm()
+#     return render(request, 'memoapp/create.html', context={'form': form})
+
 from memoapp.models import Memo
 
-
-@method_decorator(login_required, 'get')
-@method_decorator(login_required, 'post')
 class MemoCreateView(CreateView):
     model = Memo
-    form_class = MemoCreationForm
+    form_class = MemoForm
     template_name = 'memoapp/create.html'
-
-    def form_valid(self, form):
-        temp_memo = form.save(commit=False)
-        temp_memo.writer = self.request.user
-        temp_memo.save()
-        return super().form_valid(form)
 
     def get_success_url(self):
         return reverse('memoapp:detail', kwargs={'pk':self.object.pk})
 
-class MemoDetailView(DetailView, FormMixin):
-    model = Memo
-    form_class = MemoCreationForm
-    context_object_name = 'target_memo'
-    template_name = 'memoapp/detail.html'
-
-
-@method_decorator(memo_ownership_required, 'get')
-@method_decorator(memo_ownership_required, 'post')
 class MemoUpdateView(UpdateView):
     model = Memo
     context_object_name = 'target_memo'
-    form_class = MemoCreationForm
+    form_class = MemoForm
     template_name = 'memoapp/update.html'
 
     def get_success_url(self):
         return reverse('memoapp:detail', kwargs={'pk': self.object.pk})
 
-@method_decorator(memo_ownership_required, 'get')
-@method_decorator(memo_ownership_required, 'post')
+class MemoDetailView(DetailView):
+    model = Memo
+    form_class = MemoForm
+    context_object_name = 'target_memo'
+    template_name = 'memoapp/detail.html'
+
 class MemoDeleteView(DeleteView):
     model = Memo
     context_object_name = 'target_memo'

@@ -1,0 +1,18 @@
+<header class="header">
+    <div class="logo">
+        <a href="{% url 'home' %}" class="home_link">BaaN</a>
+    </div>
+    <div class="search">
+        <select>
+            <option>google</option>
+            <option>naver</option>
+        </select>
+        <input type="text" title="search" class="search_input">
+        <a class="search_button material-icons" href="">search</a>
+    </div>
+    <div class="gnb">
+        {% if target_user %}
+            {{ target_user.username }}
+        {% endif %}
+    </div>
+</header>
