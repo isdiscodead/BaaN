@@ -23,11 +23,18 @@ from accountapp.views import AccountMainView
 
 urlpatterns = [
     path('', AccountMainView.as_view(), name="home"),
+<<<<<<< HEAD
     # path('admin/', admin.site.urls),
     # path('accounts/', include('accountapp.urls')),
     # path('bookmarks/', include('bookmarkapp.urls')),
     # path('calendars/', include('calendarapp.urls')),
     path('summernote/', include('django_summernote.urls')),
+=======
+    path('admin/', admin.site.urls),
+    path('accounts/', include('accountapp.urls')),
+    path('bookmarks/', include('bookmarkapp.urls')),
+    path('calendars/', include('calendarapp.urls')),
+>>>>>>> 7ccda51b8c1b77a860219a871d3b15b3665b6f15
     path('memos/', include('memoapp.urls')),
     # path('todos/', include('todoapp.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
