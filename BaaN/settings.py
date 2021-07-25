@@ -178,3 +178,6 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 # login&logout redirect
 LOGIN_REDIRECT_URL = reverse_lazy('accountapp:main')
 LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
+
+LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
+
