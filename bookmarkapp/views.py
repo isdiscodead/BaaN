@@ -1,5 +1,7 @@
 # from django.shortcuts import render
-
+from django.core.exceptions import ValidationError
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.views.generic import ListView, CreateView
 
 from bookmarkapp.forms import BookmarkCreationForm
@@ -8,6 +10,7 @@ from bookmarkapp.models import Bookmark
 # 북마크에서 사용할 favicon과 title을 가져오기 위한 크롤링 모듈
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+from django.core.validators import URLValidator
 
 
 class BookmarkListView(ListView):
@@ -16,11 +19,24 @@ class BookmarkListView(ListView):
     template_name = 'bookmarkapp/list.html'
 
 
-class BookmarkCreateView(CreateView):
-    model = Bookmark
-    context_object_name = 'target_bookmark'
-    form_class = BookmarkCreationForm
-    template_name = 'snippets/bookmark_create.html'
+def bookmark_create(request):
+    url = request.POST.get('url')
+    title = request.POST.get('title')
+    new_bookmark = Bookmark()
+    validator = URLValidator()
+
+    try:
+        validator(url)  # url 유효성 검사
+
+        new_bookmark.url = url
+        new_bookmark.title = title
+        new_bookmark.save()
+
+    except ValidationError as exception:
+        # URL is NOT valid here.
+        print(exception)
+
+    return HttpResponseRedirect(reverse('bookmarkapp:list'))
 
     #
     # # 이미지와 타이틀 가져오기
