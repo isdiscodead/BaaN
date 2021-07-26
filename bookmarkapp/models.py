@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # url -> 이미지 변경을 위한 모듈들
-from urllib.parse import urlparse
-from django.core.files import File
-from utils.file import download, get_buffer_ext
+# from urllib.parse import urlparse
+# from django.core.files import File
+# from utils.file import download, get_buffer_ext
 
 
 class Bookmark(models.Model):
