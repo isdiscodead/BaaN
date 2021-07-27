@@ -11,4 +11,5 @@ urlpatterns = [
     path('update/<int:pk>', views.todo_update, name='update'),
     path('delete/<int:pk>', views.todo_delete, name='delete'),
     path('check/<int:pk>', views.todo_check, name='check'),
+    path('delete_all/', views.todo_delete_all, name='delete_all'),
 ]
