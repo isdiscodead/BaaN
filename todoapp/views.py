@@ -70,7 +70,7 @@ def todo_update(request, pk):
 
 
 @login_required(login_url='/accounts/login/')
-def todo_check(pk):
+def todo_check(request, pk):
     todo = Todo.objects.get(pk=pk)
     todo.done = not todo.done
     todo.save()

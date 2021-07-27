@@ -17,6 +17,9 @@
             location.replace('/todos/delete_all/');
             alert('deleted all tasks');
         }
+        function todo_check( pk ) {
+            location.replace('/todos/check/'+pk);
+        }
     </script>
 
     <div>
@@ -27,12 +30,12 @@
         {% for todo in todo_list %}
             <div>
                 {% if todo.done %}
-                    <a class="material-icons checked" href="#">
+                    <a class="material-icons checked" onclick="todo_check(pk={{ todo.pk }})">
                         check_box
                     </a>
                     <span class="checked" style="color: gray;">{{ todo.content }}</span>
                 {% else %}
-                    <a class="material-icons unchecked" href="#">
+                    <a class="material-icons unchecked" onclick="todo_check(pk={{ todo.pk }})">
                         check_box_outline_blank
                     </a>
                     <span>{{ todo.content }}</span>
