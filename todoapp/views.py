@@ -19,7 +19,7 @@ class TodoListView(ListView, FormMixin):
     template_name = 'todoapp/list.html'
 
     def get_context_data(self, **kwargs):
-        object_list = Todo.objects.filter(user=self.request.user)
+        object_list = Todo.objects.filter(user=self.request.user).order_by('done')
         return super(TodoListView, self).get_context_data(object_list=object_list, **kwargs)
 
 
@@ -38,3 +38,33 @@ class TodoCreateView(CreateView):
 
     def get_success_url(self):
         return reverse('todoapp:list')
+
+
+@login_required(login_url='/accounts/login/')
+def todo_delete(request, pk):
+    todo = Todo.objects.get(pk=pk)
+    if todo.user == request.user:
+        todo.delete()
+        return HttpResponseRedirect(reverse('todoapp:list'))
+
+
+@login_required(login_url='/accounts/login/')
+def todo_update(request, pk):
+    content = request.POST.get('title')
+    todo = Todo.objects.get(pk=pk)
+    user = request.user
+
+    todo.content = content
+    todo.user = user
+    todo.save()
+
+    return HttpResponseRedirect(reverse('todoapp:list'))
+
+
+@login_required(login_url='/accounts/login/')
+def todo_check(pk):
+    todo = Todo.objects.get(pk=pk)
+    todo.done = not todo.done
+    todo.save()
+
+    return HttpResponseRedirect(reverse('todoapp:list'))
