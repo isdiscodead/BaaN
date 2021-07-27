@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div>
+        <h3>todo list</h3><hr>
+
+        {% for todo in todo_list %}
+            <div>
+                {% if todo.done %}
+                    <a class="material-icons" href="#">
+                        check_box
+                    </a>
+                {% else %}
+                    <a class="material-icons unchecked" href="#">
+                        check_box_outline_blank
+                    </a>
+                {% endif %}
+                {{ todo.content }}
+                <a href="#" class="material-icons">delete</a>
+            </div>
+        {% endfor %}
+
+        <hr>
+
+        {% include 'todoapp/create.html' %}
+    </div>
+
+{% endblock %}
