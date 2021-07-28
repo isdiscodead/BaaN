@@ -1,13 +1,30 @@
 {% include 'base.html' %}
 
 <body>
+    <header class="header">
+            <div class="logo">
+                <a href="{% url 'home' %}" class="home_link">BaaN</a>
+            </div>
+            <div class="search">
+                <form method="get" action="" class="search_form">
+                    <select name="engine" id="engine">
+                        <option value="google">google</option>
+                        <option value="naver">naver</option>
+                    </select>
+                    <input type="text" title="search" class="search_input">
+                    <input style="font-size: 2.4rem; padding: 0; vertical-align: bottom;" type="submit" class="search_button material-icons" value="search">
+                </form>
+            </div>
+            <div class="gnb">
+                {% if user.is_authenticated %}
+                    {{ user.username }}
+                {% endif %}
+            </div>
+    </header>
+
 {#밑 내용#}
-<div id="wrap" class="wrap">
-    <header class="header"></header>
-    <div class="tablist"></div>
-    <div class="content">
-        <div class="aside"></div>
-        <div class="main">
+    <div>
+        <div >
             {% if target_user %}
                 <h5><a href="{% url 'accountapp:logout' %}">logout</a></h5>
             {% endif %}
@@ -20,7 +37,6 @@
             </div>
         </div>
     </div>
-</div>
 
 
 
