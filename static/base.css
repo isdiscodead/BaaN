@@ -1,34 +1,40 @@
-{#서치 네비게이션 바 flexbox#}
+/* main - header */
+body {
+    background-color: #d2e5d7;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #00c73c;
+    border-radius: 0 0 2rem 2rem;
+    box-shadow: inset -1rem -1rem 60px #b3c3b7,
+                inset 1rem 1rem 60px #f2fff7;
 }
 
 button {
     background: none;
     border: none;
-    color: black;
 }
 
-.logo a {
-    color: white;
+.header a {
+    color: #96ab9c;
 }
 
-.logo a:hover {
-    text-decoration: none;
-    color: white;
-}
 
 .logo {
     font-size: 3rem;
-    padding: 1.5rem;
+    padding: 2rem;
 }
 
 .gnb {
-    padding: 1rem;
-    color: white
+    padding: 2rem;
+    color: #96ab9c;
+    text-align: center;
 }
 
 .search_form {
@@ -45,9 +51,36 @@ button {
     background: none;
     margin: 0;
     padding: 0;
+    color: #96ab9c;
 }
 
 input {
-    background-color: white;
     border: 1px solid gray;
+}
+
+/* main - content */
+.main {
+    padding: 2rem;
+    text-align: center;
+}
+
+.link_flex_box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.link_box {
+    width: 50rem;
+    height: 10rem;
+    margin: 3rem 1rem;
+    padding: 2rem;
+
+    border-radius: 1rem;
+    background: linear-gradient(145deg, #bdcec2, #e1f5e6);
+    box-shadow:  11px 11px 22px #b9cabd,
+                 -11px -11px 22px #ebfff1;
+}
+
+.link_box a {
+    color: #96ab9c;
 }
