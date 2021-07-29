@@ -76,9 +76,8 @@ input {
     padding: 2rem;
 
     border-radius: 1rem;
-    background: linear-gradient(145deg, #bdcec2, #e1f5e6);
-    box-shadow:  11px 11px 22px #b9cabd,
-                 -11px -11px 22px #ebfff1;
+    box-shadow: inset 1rem 1rem 2rem #bdcec2,
+                inset -1rem -1rem 2rem #e7fced;
 }
 
 .link_box a {

@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 # Create your models here.
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -20,6 +21,7 @@ class AccountMainView(ListView):
     model = User
     context_object_name = 'target_user'
     template_name = 'accountapp/main.html'
+
 
 ########################################
 
@@ -41,5 +43,16 @@ class AccountDeleteView(DeleteView):
 
 
 def search(request):
-    engine = ""
-    pass
+    engine = request.GET.get('engine')
+    query = request.GET.get('query')
+    query = query.replace(' ', '+')
+
+    if engine == 'google':
+        url = "https://www.google.com/search?q="
+    elif engine == 'naver':
+        url = "https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query="
+    else:
+        url = "https://www.youtube.com/results?search_query="
+
+    url += query
+    return HttpResponseRedirect(url)
