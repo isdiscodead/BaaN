@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, DeleteView, ListView, UpdateView
@@ -42,5 +44,10 @@ class MemoDeleteView(DeleteView):
 class MemoListView(ListView):
     model = Memo
     context_object_name = 'memo_list'
-    template_name = 'memoapp/list.html'
+    template_name = 'memoapp/list2.html'
     paginate_by = 5
+
+def memo_delete(request, pk):
+    memo = Memo.objects.get(id=pk)
+    memo.delete()
+    return HttpResponseRedirect(reverse('memoapp:list'))

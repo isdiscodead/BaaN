@@ -36,7 +36,7 @@
       {% for memo in memo_list %}
         <div>
             <a href="{% url 'memoapp:detail' pk=memo.pk %}">
-            {{ memo.title | safe }} <!--왼쪽의 article이 card.html의 article과 같이 쓸 것이다-->
+            {{ memo.title | safe }}
             </a>
         </div>
       {% endfor %}

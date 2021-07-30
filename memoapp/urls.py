@@ -14,5 +14,5 @@ urlpatterns = [
     path('create/', MemoCreateView.as_view(), name='create'),
     path('detail/<int:pk>', MemoDetailView.as_view(), name='detail'),
     path('update/<int:pk>', MemoUpdateView.as_view(), name='update'),
-    path('delete/<int:pk>', MemoDeleteView.as_view(), name='delete'),
+    path('delete/<int:pk>', views.memo_delete, name='delete'),
 ]
