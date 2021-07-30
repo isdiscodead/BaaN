@@ -1,6 +1,6 @@
 /* main - header */
 body {
-    background-color: #d2e5d7;
+    background-color: #eff1ef;
 }
 
 a:hover {
@@ -12,8 +12,8 @@ a:hover {
     justify-content: space-between;
     align-items: center;
     border-radius: 0 0 2rem 2rem;
-    box-shadow: inset -1rem -1rem 60px #b3c3b7,
-                inset 1rem 1rem 60px #f2fff7;
+    box-shadow: inset -20px -20px 60px #cbcdcb,
+                inset 20px 20px 60px #ffffff;
 }
 
 button {
@@ -76,8 +76,9 @@ input {
     padding: 2rem;
 
     border-radius: 1rem;
-    box-shadow: inset 1rem 1rem 2rem #bdcec2,
-                inset -1rem -1rem 2rem #e7fced;
+    background: linear-gradient(145deg, #ffffff, #d7d9d7);
+    box-shadow:  1rem 1rem 3rem #cbcdcb,
+                 -1rem -1rem 3rem #ffffff;
 }
 
 .link_box a {
