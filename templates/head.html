@@ -51,14 +51,35 @@
                     }
                     ,
 
-                    {#pre-parsed object. To demonstrate the simplest case#}
                     events: [
                         { // this object will be "parsed" into an Event Object
-                            title: 'The Title', // a property!
-                            start: '2018-09-01', // a property!
-                            end: '2018-09-02' // a property! ** see important note below about 'end' **
-                        }
+                            title: "{{ i.event_name}}", // a property!
+                            start: '{{ i.start_date|date:"Y-m-d" }}', // a property!
+                            end: '{{ i.end_date|date:"Y-m-d" }}' // a property! ** see important note below about 'end' **
+                        },
+
+                        {#여기는 수동 입력..#}
+                        {
+                            title: 'event1',
+                            start: '2021-08-12'
+                        },
+                        {
+                            title: 'event2',
+                            start: '2021-08-22',
+                            end: '2021-08-25'
+                        },
                     ],
+
+                    {#이벤트 클릭#}
+                    eventClick: function (info) {
+                        alert('Event: ' + info.event.title);
+                        alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+                        alert('View: ' + info.view.type);
+
+                        // change the border color just for fun
+                        info.el.style.borderColor = 'red';
+                    },
+
 
                     initialView: 'dayGridMonth'   //달(1~30일 등) 기준 달력자체 출력 : 근데 주석처리해도 잘 뜸,,, 무슨 역할인걸까
 
