@@ -176,8 +176,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # login&logout redirect
-LOGIN_REDIRECT_URL = reverse_lazy('accountapp:main')
-LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
-
+LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
 

@@ -1,6 +1,11 @@
 /* main - header */
 body {
     background-color: #eff1ef;
+    color: #2d2f2d;
+}
+
+hr {
+  background-color: #96ab9c;
 }
 
 a:hover {
@@ -29,11 +34,13 @@ button {
 .logo {
     font-size: 3rem;
     padding: 2rem;
+    color: #96ab9c;
+    text-shadow: 1px 1px 1px white;
 }
 
 .gnb {
     padding: 2rem;
-    color: #96ab9c;
+    color: $color-green;
     text-align: center;
 }
 
@@ -74,7 +81,6 @@ input {
     height: 10rem;
     margin: 3rem 1rem;
     padding: 2rem;
-
     border-radius: 1rem;
     background: linear-gradient(145deg, #ffffff, #d7d9d7);
     box-shadow:  1rem 1rem 3rem #cbcdcb,
@@ -82,5 +88,76 @@ input {
 }
 
 .link_box a {
+    color: #96ab9c;
+}
+
+
+/* account - form */
+.account_form_div {
+    width: 40%;
+    margin: 10rem auto;
+    text-align: center;
+    color: #96ab9c;
+}
+
+.account_form_div form-group {
+    text-align: left;
+}
+
+.account_form_div input {
+  border: 0;
+  outline: 0;
+  border-radius: 10rem;
+  padding: 2rem;
+  text-shadow: 1px 1px 0 white;
+  background: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.account_form_div input:focus {
+    outline: none;
+    box-shadow:  inset 1px 1px 2px #cbcdcb, inset -1px -1px 2px white;
+}
+
+.account_form_title {
+    font-size: 3rem;
+    color: #96ab9c;
+    text-shadow: 1px 1px 1px white;
+}
+
+.account_form_input {
+    margin-bottom: 4rem;
+    margin-right: 0.5rem;
+    box-shadow:  inset 2px 2px 5px #cbcdcb, inset -5px -5px 10px white;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
+.account_form_div .button_submit {
+  color: #96ab9c;
+  font-size: 2rem;
+  font-weight: bold;
+  box-shadow: -5px -5px 20px white,  5px 5px 20px #cbcdcb;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.6rem 3rem;
+  margin-bottom: 2rem;
+}
+
+.button_submit:hover {
+    box-shadow: -2px -2px 5px white, 2px 2px 5px #cbcdcb;
+}
+
+.button_submit:active {
+    box-shadow: inset 1px 1px 2px #cbcdcb, inset -1px -1px 2px #cbcdcb;
+}
+
+.account_url:hover{
+    color: #2d2f2d;
+}
+.account_url {
     color: #96ab9c;
 }
