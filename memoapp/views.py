@@ -20,6 +20,7 @@ class MemoCreateView(CreateView):
     def get_success_url(self):
         return reverse('memoapp:detail', kwargs={'pk':self.object.pk})
 
+
 class MemoUpdateView(UpdateView):
     model = Memo
     context_object_name = 'target_memo'
