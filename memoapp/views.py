@@ -2,23 +2,28 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, DetailView, DeleteView, ListView, UpdateView
+from django.views.generic import DetailView, DeleteView, ListView, UpdateView
 
 from memoapp.forms import MemoForm
-
-# def MemoView(request):
-#     form = MemoForm()
-#     return render(request, 'memoapp/create.html', context={'form': form})
-
 from memoapp.models import Memo
 
-class MemoCreateView(CreateView):
-    model = Memo
-    form_class = MemoForm
-    template_name = 'memoapp/create.html'
+def memo_create(request):
+    form = MemoForm(request.POST)
+    if form.is_valid():
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        user = request.user
+        return redirect("home")
+    return render(request, "snippets/memo_create.html", {"form": form})
 
-    def get_success_url(self):
-        return reverse('memoapp:detail', kwargs={'pk':self.object.pk})
+
+# class MemoCreateView(CreateView):
+#     model = Memo
+#     form_class = MemoForm
+#     # template_name = 'snippets/memo_create.html'
+#
+#     def get_success_url(self):
+#         return reverse('memoapp:list')
 
 
 class MemoUpdateView(UpdateView):
