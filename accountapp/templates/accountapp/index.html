@@ -8,12 +8,12 @@
             <div class="search">
                 <form method="get" action="{% url 'accountapp:search' %}" class="search_form">
                     <select name="engine" id="engine">
-                        <option value="google">google</option>
+                        <option value="google">google ▼</option>
                         <option value="naver">naver</option>
                         <option value="youtube">youtube</option>
                     </select>
-                    <input type="text" name="query" class="search_input">
-                    <input style="font-size: 2.4rem; padding: 0; vertical-align: bottom;" type="submit" class="search_button material-icons" value="search">
+                    <input type="text" name="query" placeholder="search for..." class="search_input">
+                    <input style="font-size: 2.4rem; vertical-align: bottom;" type="submit" class="search_button material-icons" value="search">
                 </form>
             </div>
             <div class="gnb">
