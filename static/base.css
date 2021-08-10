@@ -116,6 +116,7 @@ button {
     margin: 3rem 1rem;
     padding: 2rem;
     border-radius: 1rem;
+    text-align: center;
     box-shadow: -2px -2px 5px white,
               3px 3px 5px #cbcdcb;
 }
@@ -157,7 +158,7 @@ button {
     box-shadow:  inset 1px 1px 2px #cbcdcb, inset -1px -1px 2px white;
 }
 
-.account_form_title {
+.form_title {
     font-size: 3rem;
     color: #96ab9c;
     text-shadow: 1px 1px 1px white;
@@ -172,13 +173,14 @@ button {
     transition: all 0.2s ease-in-out;
 }
 
-.account_form_div .button_submit {
+.button_submit {
   color: #96ab9c;
   font-size: 2rem;
   font-weight: bold;
   box-shadow: -5px -5px 20px white,  5px 5px 20px #cbcdcb;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+  border-radius: 2rem;
   font-weight: 600;
   padding: 0.6rem 3rem;
   margin-bottom: 2rem;
@@ -197,4 +199,33 @@ button {
 }
 .account_url {
     color: #96ab9c;
+}
+
+/* bookmarkapp */
+.bookmark_box {
+    margin: 3rem auto;
+}
+
+.bookmark_form_div {
+    margin: 3rem;
+    text-align: center;
+    color: #96ab9c;
+    padding: 5rem;
+    border-radius: 5rem;
+    box-shadow: -2px -2px 5px white,
+              3px 3px 5px #cbcdcb;
+}
+
+.button_div img {
+    width: 2rem;
+    vertical-align: bottom;
+    margin-right: 1rem;
+}
+
+.edit_button {
+    font-size: 1.8rem;
+    color: #96ab9c;
+    vertical-align: bottom;
+    padding-left: 0.2rem;
+    padding-right: 0rem;
 }
