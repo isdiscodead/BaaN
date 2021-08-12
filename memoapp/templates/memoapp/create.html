@@ -3,11 +3,11 @@
 {% block content %}
   <div>
     <form action="{% url 'memoapp:create' %}" method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      <table>
-        {{form.as_table}}
-      </table>
-      <input type="submit" class = "btn btn-dark rounded-pill col-6 mt-3">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input type="submit" class = "btn btn-dark rounded-pill col-6 mt-3" value="add">
     </form>
   </div>
 {% endblock %}

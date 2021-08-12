@@ -24,37 +24,43 @@ class MemoCreateView(CreateView):
     form_class = MemoForm
     template_name = 'memoapp/create.html'
 
-    def form_valid(self, form):
-        temp_memo = form.save(commit=False)
-        temp_memo.user = self.request.user
-        temp_memo.save()
-        return super().form_valid(form)
-
     def get_success_url(self):
         return reverse('memoapp:list')
-
-class MemoUpdateView(UpdateView):
-    model = Memo
-    context_object_name = 'target_memo'
-    form_class = MemoForm
-    template_name = 'memoapp/update.html'
-
-    def get_success_url(self):
-        return reverse('memoapp:detail', kwargs={'pk': self.object.pk})
-
-class MemoDetailView(DetailView):
-    model = Memo
-    form_class = MemoForm
-    context_object_name = 'target_memo'
-    template_name = 'memoapp/detail.html'
 
 class MemoListView(ListView):
     model = Memo
     context_object_name = 'memo_list'
-    template_name = 'memoapp/list2.html'
+    template_name = 'memoapp/list.html'
     paginate_by = 5
 
 def memo_delete(request, pk):
     memo = Memo.objects.get(id=pk)
     memo.delete()
     return HttpResponseRedirect(reverse('memoapp:list'))
+
+def memo_detail(request, pk):
+    memo = Memo.objects.get(id=pk)
+
+    return HttpResponseRedirect(reverse('memoapp:list'))
+
+# class MemoDetailView(DetailView):
+#     model = Memo
+#     form_class = MemoForm
+#     context_object_name = 'target_memo'
+
+def memo_update(request):
+    form = MemoForm(request.POST)
+    if form.is_valid():
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        user = request.user
+        return redirect("home")
+    return render(request, "memoapp/create.html", {"form": form})
+
+# class MemoUpdateView(UpdateView):
+#     model = Memo
+#     context_object_name = 'target_memo'
+#     form_class = MemoForm
+#
+#     def get_success_url(self):
+#         return reverse('memoapp:detail', kwargs={'pk': self.object.pk})
