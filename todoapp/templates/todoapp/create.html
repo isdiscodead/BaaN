@@ -5,7 +5,7 @@
         <form action="{% url 'todoapp:create' %}" method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
-            <input type="submit" class="button_add" value="add">
+            <button type="submit" class="button_add material-icons">add</button>
         </form>
     </div>
 {% endblock %}

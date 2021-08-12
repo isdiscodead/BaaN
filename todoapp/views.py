@@ -37,7 +37,7 @@ class TodoCreateView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('todoapp:list')
+        return reverse('home')
 
 
 @login_required(login_url='/accounts/login/')
