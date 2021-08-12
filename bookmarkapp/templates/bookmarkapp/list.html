@@ -5,10 +5,9 @@
 
     <div class="bookmark_form_div">
         <h2 class="form_title">bookmarks</h2>
-        <hr>
 
         {% for bookmark in bookmark_list %}
-        <div class="link_box bookmark_box">
+        <div class="bookmark_box">
             <div class="button_div">
                 <img src="{{ bookmark.favicon_url }}">
                 <a href="{{ bookmark.url }}">{{ bookmark.title | truncatechars:20 }}</a>
@@ -58,9 +57,7 @@
         </div>
         {% endfor %}
 
-        <hr>
-
-        <button type="button" class="button_submit" data-target="#bookmark_add" data-toggle="modal">add</button>
+        <button type="button" class="button_add" data-target="#bookmark_add" data-toggle="modal">add</button>
     </div>
 
     {% include 'snippets/bookmark_create.html' %}

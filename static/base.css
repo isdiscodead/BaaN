@@ -163,6 +163,7 @@ button {
     font-size: 3rem;
     color: #96ab9c;
     text-shadow: 1px 1px 1px white;
+    margin-bottom: 2rem;
 }
 
 .account_form_input {
@@ -204,16 +205,19 @@ button {
 
 /* bookmarkapp */
 .bookmark_box {
-    margin: 2rem auto;
-    width: 100%;
-    height: 5rem;
+    margin: 1.5rem auto;
+    padding: 1rem;
+    box-shadow:  inset 2px 2px 5px #cbcdcb, inset -5px -5px 10px white;
+    box-sizing: border-box;
+    border-radius: 1rem;
+    transition: all 0.2s ease-in-out;
 }
 
 .bookmark_form_div {
-    margin: 3rem;
+    margin: 1rem;
     text-align: center;
     color: #96ab9c;
-    padding: 5rem;
+    padding: 2rem;
     border-radius: 5rem;
     box-shadow: -2px -2px 5px white,
               3px 3px 5px #cbcdcb;
@@ -221,6 +225,7 @@ button {
 
 .button_div img {
     width: 2rem;
+    height: 2rem;
     vertical-align: bottom;
     margin-right: 1rem;
 }
@@ -237,4 +242,17 @@ button {
     vertical-align: bottom;
     padding-left: 0.2rem;
     padding-right: 0rem;
+}
+
+.button_add {
+    color: #96ab9c;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: -5px -5px 20px white,  5px 5px 20px #cbcdcb;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    border-radius: 2rem;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    margin-top: 1rem;
 }
