@@ -4,16 +4,16 @@
 {% block content %}
 
 <div>
-    <div class="">
-        <div style="margin: 0.5rem;">
-            <h3><strong>Login</strong></h3>
+    <div class="account_form_div">
+        <div>
+            <h3 class="form_title"><strong>Login</strong></h3>
             <hr>
         </div>
         <form action="" method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
-            <input type="submit" value="login" class="btn btn-warning">
-            <a href="{% url 'accountapp:create' %}"><h6>SignUp</h6></a>
+            <input type="submit" value="login" class="button_submit">
+            <a href="{% url 'accountapp:create' %}" class="account_url"><h6>SignUp</h6></a>
         </form>
     </div>
 </div>

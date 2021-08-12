@@ -1,6 +1,11 @@
 /* main - header */
 body {
     background-color: #eff1ef;
+    color: #2d2f2d;
+}
+
+hr {
+  background-color: #96ab9c;
 }
 
 a:hover {
@@ -12,8 +17,8 @@ a:hover {
     justify-content: space-between;
     align-items: center;
     border-radius: 0 0 2rem 2rem;
-    box-shadow: inset -20px -20px 60px #cbcdcb,
-                inset 20px 20px 60px #ffffff;
+    box-shadow: -2px -2px 5px white,
+              3px 3px 5px #cbcdcb;
 }
 
 button {
@@ -27,8 +32,11 @@ button {
 
 
 .logo {
+    font-family: 'Saira Stencil One', cursive;
     font-size: 3rem;
     padding: 2rem;
+    color: #96ab9c;
+    text-shadow: 1px 1px 1px white;
 }
 
 .gnb {
@@ -46,16 +54,49 @@ button {
     align-items: center;
 }
 
+.search select {
+    border: none;
+    border-radius: 3rem;
+    color: #96ab9c;
+    box-shadow: -2px -2px 5px white,
+              3px 3px 5px #cbcdcb;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    padding: 0.5rem 1rem;
+    text-align-last: center;
+    text-align: center;
+    -ms-text-align-last: center;
+    -moz-text-align-last: center;
+}
+
 .search_button {
     border: 0;
     background: none;
-    margin: 0;
-    padding: 0;
+    margin: 0 0.2rem;
+    padding: 0.3rem 0;
     color: #96ab9c;
 }
 
-input {
-    border: 1px solid gray;
+.search input[type=text] {
+    border: none;
+    color: #2d2f2d;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border-radius: 4rem;
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    box-shadow:  inset 2px 2px 5px #cbcdcb, inset -5px -5px 10px white;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
+.search input[type=text]:focus {
+    outline: none;
+    box-shadow:  inset 1px 1px 2px #cbcdcb, inset -1px -1px 2px white;
 }
 
 /* main - content */
@@ -66,6 +107,7 @@ input {
 
 .link_flex_box {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
@@ -74,13 +116,117 @@ input {
     height: 10rem;
     margin: 3rem 1rem;
     padding: 2rem;
-
     border-radius: 1rem;
-    background: linear-gradient(145deg, #ffffff, #d7d9d7);
-    box-shadow:  1rem 1rem 3rem #cbcdcb,
-                 -1rem -1rem 3rem #ffffff;
+    text-align: center;
+    box-shadow: -2px -2px 5px white,
+              3px 3px 5px #cbcdcb;
 }
 
 .link_box a {
     color: #96ab9c;
+}
+
+
+/* account - form */
+.account_form_div {
+    width: 40%;
+    margin: 6rem auto;
+    text-align: center;
+    color: #96ab9c;
+    padding: 5rem;
+    border-radius: 5rem;
+    box-shadow: -2px -2px 5px white,
+              3px 3px 5px #cbcdcb;
+}
+
+.account_form_div form-group {
+    text-align: left;
+}
+
+.account_form_div input {
+  border: 0;
+  outline: 0;
+  border-radius: 10rem;
+  padding: 2rem;
+  text-shadow: 1px 1px 0 white;
+  background: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.account_form_div input:focus {
+    outline: none;
+    box-shadow:  inset 1px 1px 2px #cbcdcb, inset -1px -1px 2px white;
+}
+
+.form_title {
+    font-size: 3rem;
+    color: #96ab9c;
+    text-shadow: 1px 1px 1px white;
+}
+
+.account_form_input {
+    margin-bottom: 4rem;
+    margin-right: 0.5rem;
+    box-shadow:  inset 2px 2px 5px #cbcdcb, inset -5px -5px 10px white;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
+.button_submit {
+  color: #96ab9c;
+  font-size: 2rem;
+  font-weight: bold;
+  box-shadow: -5px -5px 20px white,  5px 5px 20px #cbcdcb;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border-radius: 2rem;
+  font-weight: 600;
+  padding: 0.6rem 3rem;
+  margin-bottom: 2rem;
+}
+
+.button_submit:hover {
+    box-shadow: -2px -2px 5px white, 2px 2px 5px #cbcdcb;
+}
+
+.button_submit:active {
+    box-shadow: inset 1px 1px 2px #cbcdcb, inset -1px -1px 2px #cbcdcb;
+}
+
+.account_url:hover{
+    color: #2d2f2d;
+}
+.account_url {
+    color: #96ab9c;
+}
+
+/* bookmarkapp */
+.bookmark_box {
+    margin: 3rem auto;
+}
+
+.bookmark_form_div {
+    margin: 3rem;
+    text-align: center;
+    color: #96ab9c;
+    padding: 5rem;
+    border-radius: 5rem;
+    box-shadow: -2px -2px 5px white,
+              3px 3px 5px #cbcdcb;
+}
+
+.button_div img {
+    width: 2rem;
+    vertical-align: bottom;
+    margin-right: 1rem;
+}
+
+.edit_button {
+    font-size: 1.8rem;
+    color: #96ab9c;
+    vertical-align: bottom;
+    padding-left: 0.2rem;
+    padding-right: 0rem;
 }

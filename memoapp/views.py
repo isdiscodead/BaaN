@@ -17,9 +17,21 @@ from memoapp.models import Memo
 #         return redirect("home")
 #     return render(request, "memoapp/create.html", {"form": form})
 
+
 @method_decorator(login_required(login_url='/accounts/login/'), 'get')
 @method_decorator(login_required(login_url='/accounts/login/'), 'post')
+
 class MemoCreateView(CreateView):
+    model = Memo
+    form_class = MemoForm
+    template_name = 'memoapp/create.html'
+
+    def get_success_url(self):
+        return reverse('memoapp:list')
+
+
+class MemoUpdateView(UpdateView):
+
     model = Memo
     form_class = MemoForm
     template_name = 'memoapp/create.html'

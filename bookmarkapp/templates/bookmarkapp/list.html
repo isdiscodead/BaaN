@@ -2,25 +2,19 @@
 {% load bootstrap4 %}
 
 {% block content %}
-    <head>
-      <title></title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    </head>
 
-    <div>
-        <h2>bookmarks</h2>
+    <div class="bookmark_form_div">
+        <h2 class="form_title">bookmarks</h2>
         <hr>
 
         {% for bookmark in bookmark_list %}
-        <div style="width:20rem; height:10rem; background-color: pink; border-radius: 1rem;">
-            <img src="{{ bookmark.favicon_url }}">
-            <a href="{{ bookmark.url }}">{{ bookmark.title | truncatechars:10 }}</a>
-            <button class="material-icons" data-toggle="modal" data-target="#delete_modal" class="material-icons">delete</button>
-            <button class="material-icons" data-toggle="modal" data-target="#bookmark_update" class="material-icons">edit</button>
+        <div class="link_box bookmark_box">
+            <div class="button_div">
+                <img src="{{ bookmark.favicon_url }}">
+                <a href="{{ bookmark.url }}">{{ bookmark.title | truncatechars:20 }}</a>
+                <button class="material-icons edit_button" data-toggle="modal" data-target="#delete_modal" class="material-icons">delete</button>
+                <button class="material-icons edit_button" data-toggle="modal" data-target="#bookmark_update" class="material-icons">edit</button>
+            </div>
         </div>
 
         <div id="delete_modal" class="modal fade" tabindex="-1" role="dialog">
@@ -64,7 +58,7 @@
 
         <hr>
 
-        <button type="button" data-target="#bookmark_add" data-toggle="modal">add</button>
+        <button type="button" class="button_submit" data-target="#bookmark_add" data-toggle="modal">add</button>
     </div>
 
     {% include 'snippets/bookmark_create.html' %}
