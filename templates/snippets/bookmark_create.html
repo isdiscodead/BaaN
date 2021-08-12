@@ -9,8 +9,8 @@
 
         <form action="{% url 'bookmarkapp:create' %}" method="post" class="form-inline">
             {% csrf_token %}
-            <input type="text" class="" id="title" name="title" placeholder="input title"><br>
-            <input type="text" class="" id="url" name="url" placeholder="*input url*">
+            <input type="text" class="input" id="title" name="title" placeholder="input title"><br>
+            <input type="text" class="input" id="url" name="url" placeholder="*input url*">
             <hr>
             <input type="submit" class="btn btn-primary" value="add">
             <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>

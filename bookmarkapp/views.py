@@ -60,7 +60,7 @@ def bookmark_create(request):
         # URL is NOT valid here.
         print(exception)
 
-    return HttpResponseRedirect(reverse('bookmarkapp:list'))
+    return HttpResponseRedirect(reverse('home'))
 
 
 @login_required(login_url='/accounts/login/')
