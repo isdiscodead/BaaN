@@ -22,3 +22,31 @@
     </a>
   </div>
 {% endblock %}
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+  <div id="MemoDetailView" class="modal fade" role="dialog" data-backdrop="false"
+   style="background-color: white; width: 50%; height: 50%; text-align: center; margin: auto auto; border: 1px solid gray;">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+
+          <h4>Detailed memo</h4>
+          <hr>
+
+          <form action="{% url 'memoapp:detail' pk=target_memo.pk %}" method="post" class="form-inline">
+              <div>
+                title : {{ target_memo.title }}
+              </div>
+              <div>
+                content : {{ target_memo.content | safe }}
+              </div>
+              <hr>
+              <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+          </form>
+      </div>
+  </div>
+
+{% endblock %}
