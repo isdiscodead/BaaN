@@ -47,8 +47,8 @@
 
                 <form action="{% url 'bookmarkapp:update' pk=bookmark.pk %}" method="post" class="form-inline">
                     {% csrf_token %}
-                    <input type="text" class="" id="title" name="title" placeholder="input title" value="{{ bookmark.title }}"><br>
-                    <input type="text" class="" id="url" name="url" placeholder="*input url*" value="{{ bookmark.url }}">
+                    <input type="text" id="title" name="title" placeholder="input title" value="{{ bookmark.title }}"><br>
+                    <input type="text" id="url" name="url" placeholder="*input url*" value="{{ bookmark.url }}">
                     <hr>
                     <input type="submit" class="btn btn-primary" value="apply">
                     <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
@@ -57,7 +57,7 @@
         </div>
         {% endfor %}
 
-        <button type="button" class="button_add" data-target="#bookmark_add" data-toggle="modal">add</button>
+        <button type="button" class="material-icons button_add" data-target="#bookmark_add" data-toggle="modal">add</button>
     </div>
 
     {% include 'snippets/bookmark_create.html' %}

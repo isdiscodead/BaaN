@@ -45,7 +45,7 @@ def todo_delete(request, pk):
     todo = Todo.objects.get(pk=pk)
     if todo.user == request.user:
         todo.delete()
-        return HttpResponseRedirect(reverse('todoapp:list'))
+        return HttpResponseRedirect(reverse('home'))
 
 
 @login_required(login_url='/accounts/login/')
@@ -53,7 +53,7 @@ def todo_delete_all(request):
     todo_list = Todo.objects.filter(user=request.user)
     for todo in todo_list:
         todo.delete()
-    return HttpResponseRedirect(reverse('todoapp:list'))
+    return HttpResponseRedirect(reverse('home'))
 
 
 @login_required(login_url='/accounts/login/')
@@ -66,7 +66,7 @@ def todo_update(request, pk):
     todo.user = user
     todo.save()
 
-    return HttpResponseRedirect(reverse('todoapp:list'))
+    return HttpResponseRedirect(reverse('home'))
 
 
 @login_required(login_url='/accounts/login/')
@@ -75,4 +75,4 @@ def todo_check(request, pk):
     todo.done = not todo.done
     todo.save()
 
-    return HttpResponseRedirect(reverse('todoapp:list'))
+    return HttpResponseRedirect(reverse('home'))

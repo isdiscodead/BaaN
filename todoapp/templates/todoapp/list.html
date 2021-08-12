@@ -13,13 +13,13 @@
         }
     </script>
 
-    <div>
-        <h3>todo list &nbsp <span style="font-size: 1rem;"><a data-target="#delete_all_modal" data-toggle="modal">delete all</a></span></h3>
-
-        <hr>
+    <div class="bookmark_form_div">
+        <span class="form_title">todo list&nbsp</span>
+        <span class="material-icons"><a data-target="#delete_all_modal" class="account_url" data-toggle="modal">delete_forever</a></span>
 
         {% for todo in todo_list %}
-            <div>
+
+            <div class="button_div">
                 {% if todo.done %}
                     <a class="material-icons checked" onclick="todo_check(pk={{ todo.pk }})">
                         check_box
@@ -31,9 +31,10 @@
                     </a>
                     <span>{{ todo.content }}</span>
                 {% endif %}
-
-                <a data-toggle="modal" data-target="#todo_update" class="material-icons" style="color: gray;">edit</a>
-                <a href="{% url 'todoapp:delete' pk=todo.pk %}" class="material-icons" style="color: gray;">delete</a>
+                <span>
+                    <a data-toggle="modal" data-target="#todo_update" class="material-icons edit_button">edit</a>
+                    <a href="{% url 'todoapp:delete' pk=todo.pk %}" class="material-icons edit_button">delete</a>
+                </span>
             </div>
 
             <div id="delete_all_modal" class="modal fade" tabindex="-1" role="dialog">
@@ -67,8 +68,8 @@
                         {% csrf_token %}
                         <input type="text" class="" id="title" name="title" placeholder="input title" value="{{ todo.content }}"><br>
                         <hr>
-                        <input type="submit" class="btn btn-primary" value="apply">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+                        <input type="submit" id="submit" class=" button_submit" value=""><label class="material-icons" for="submit">apply</label>
+                        <button type="button" class="button_submit material-icons" data-dismiss="modal">cancel</button>
                     </form>
                 </div>
             </div>
