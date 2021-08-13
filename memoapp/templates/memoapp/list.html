@@ -74,8 +74,9 @@
               </div>
         </div>
 
-
         {% endfor %}
+
+        {% include 'memoapp/create.html' %}
 
         <button type="button" class="button_submit" data-target="#memo_add" data-toggle="modal">add</button>
 
@@ -83,26 +84,7 @@
 
     {% include 'snippets/pagination.html' with page_obj=page_obj %}
 
-    {% include 'memoapp/create.html' %}
 
 
-
-    <hr>
-
-
-
-    <script type="text/javascript">
-        function delete_modal( pk ) {
-            location.replace('/memos/delete/'+pk);
-        }
-    </script>
-
-    <script type='text/javascript'>
-        $(function() {
-            $('.summernote').summernote({
-                height : 500
-            });
-        });
-</script>
 
 {% endblock %}

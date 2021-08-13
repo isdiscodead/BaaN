@@ -19,9 +19,8 @@ from memoapp.models import Memo
 #     return render(request, "memoapp/create.html", {"form": form})
 
 
-# @method_decorator(login_required(login_url='/accounts/login/'), 'get')
-# @method_decorator(login_required(login_url='/accounts/login/'), 'post')
-
+@method_decorator(login_required(login_url='/accounts/login/'), 'get')
+@method_decorator(login_required(login_url='/accounts/login/'), 'post')
 class MemoCreateView(CreateView):
     model = Memo
     form_class = MemoForm
@@ -35,15 +34,10 @@ class MemoCreateView(CreateView):
 
     def get_success_url(self):
         return reverse('memoapp:list', kwargs={'pk':self.object.pk})
+        # return HttpResponseRedirect(reverse('memoapp:list'))
 
-class MemoUpdateView(UpdateView):
-    model = Memo
-    form_class = MemoForm
-    template_name = 'memoapp/create.html'
 
-    def get_success_url(self):
-        return reverse('memoapp:list', kwargs={'pk':self.object.pk})
-
+@method_decorator(login_required(login_url='/accounts/login/'), 'get')
 class MemoListView(ListView, FormMixin):
     model = Memo
     form_class = MemoForm
@@ -51,20 +45,18 @@ class MemoListView(ListView, FormMixin):
     template_name = 'memoapp/list.html'
     paginate_by = 5
 
-def memo_delete(request, pk):
-    memo = Memo.objects.get(pk=pk)
-    memo.delete()
-    return HttpResponseRedirect(reverse('memoapp:list'))
 
-# class MemoDetailView(DetailView, FormMixin):
-#     model = Memo
-#     form_class = MemoForm
-#     context_object_name = 'target_memo'
+@method_decorator(login_required(login_url='/accounts/login/'), 'get')
+class MemoDetailView(DetailView, FormMixin):
+    model = Memo
+    form_class = MemoForm
+    context_object_name = 'target_memo'
 
-def memo_detail(request, pk):
-    memo = Memo.objects.get(pk=pk)
-    return HttpResponseRedirect(reverse('memoapp:list'))
+    def get_success_url(self):
+        return reverse('memoapp:list')
 
+
+@method_decorator(login_required(login_url='/accounts/login/'), 'get')
 class MemoUpdateView(UpdateView, FormMixin):
     model = Memo
     context_object_name = 'target_memo'
@@ -72,3 +64,9 @@ class MemoUpdateView(UpdateView, FormMixin):
 
     def get_success_url(self):
         return reverse('memoapp:list')
+
+@login_required(login_url='/accounts/login/')
+def memo_delete(request, pk):
+    memo = Memo.objects.get(pk=pk)
+    memo.delete()
+    return HttpResponseRedirect(reverse('memoapp:list'))
