@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, ListView, UpdateView, CreateView
+from django.views.generic.edit import FormMixin
 
 from memoapp.forms import MemoForm
 from memoapp.models import Memo
@@ -26,12 +27,17 @@ class MemoCreateView(CreateView):
     form_class = MemoForm
     template_name = 'memoapp/create.html'
 
+    # def form_valid(self, form):
+    #     temp_memo = form.save(commit=False)
+    #     temp_memo.user = self.request.user
+    #     temp_memo.save()
+    #     return super().form_valid(form)
+
     def get_success_url(self):
         return reverse('memoapp:list')
 
 
 class MemoUpdateView(UpdateView):
-
     model = Memo
     form_class = MemoForm
     template_name = 'memoapp/create.html'
@@ -39,19 +45,20 @@ class MemoUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('memoapp:list')
 
-class MemoListView(ListView):
+class MemoListView(ListView, FormMixin):
     model = Memo
+    form_class = MemoForm
     context_object_name = 'memo_list'
     template_name = 'memoapp/list.html'
     paginate_by = 5
 
 def memo_delete(request, pk):
-    memo = Memo.objects.get(id=pk)
+    memo = Memo.objects.get(pk=pk)
     memo.delete()
     return HttpResponseRedirect(reverse('memoapp:list'))
 
 def memo_detail(request, pk):
-    memo = Memo.objects.get(id=pk)
+    memo = Memo.objects.get(pk=pk)
 
     return HttpResponseRedirect(reverse('memoapp:list'))
 
@@ -66,6 +73,11 @@ def memo_update(request):
         title = request.POST.get('title')
         content = request.POST.get('content')
         user = request.user
+        new_memo = Memo.objects.get(pk=pk)
+
+        new_memo.title = title
+        new_memo.content = content
+
         return redirect("home")
     return render(request, "memoapp/create.html", {"form": form})
 

@@ -3,6 +3,6 @@ from django.db import models
 
 
 class Memo(models.Model):
-    title = models.CharField(max_length=10, null=True, default="untitled")
+    title = models.CharField(max_length=10, null=True)
     content = models.TextField()
     created_at = models.DateField(auto_now=True)
