@@ -2,25 +2,18 @@
 {% load bootstrap4 %}
 
 {% block content %}
-    <head>
-        <title></title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css"/>
-    </head>
 
-    <div>
-        <h2>Summernotes</h2>
+
+    <div class="bookmark_form_div">
+        <h2 class="form_title" style="margin-bottom: 1rem;">Memo list&nbsp</h2>
         <hr>
 
         {% for memo in memo_list %}
-        <div style="width:20rem; height:10rem; background-color: pink; border-radius: 1rem;">
+        <div>
             <a data-toggle="modal" data-target="#memo_detail{{ memo.pk }}">{{ memo.title | safe }}</a>
-            <button class="material-icons" data-toggle="modal" data-target="#delete_modal{{ memo.pk }}" class="material-icons">delete</button>
             <button class="material-icons" data-toggle="modal" data-target="#memo_update{{ memo.pk }}" class="material-icons">edit</button>
+            <button class="material-icons" data-toggle="modal" data-target="#delete_modal{{ memo.pk }}" class="material-icons">delete</button>
+
 
         </div>
 
@@ -44,8 +37,7 @@
             </div>
         </div>
 
-        <div id="memo_detail{{ memo.pk }}" class="modal fade" role="dialog" data-backdrop="false"
-               style="background-color: white; width: 50%; height: 50%; text-align: center; margin: auto auto; border: 1px solid gray;">
+        <div id="memo_detail{{ memo.pk }}" class="modal fade modal_box_div" role="dialog" data-backdrop="false">
               <div class="modal-dialog modal-dialog-centered" role="document">
                   <div>
                     title : {{ memo.title }}
@@ -71,6 +63,14 @@
     <script type="text/javascript">
         function delete_modal( pk ) {
             location.replace('/memos/delete/'+pk);
+
+        function hideModal( id ) {
+            $(id).removeClass("in");
+            $(".modal-backdrop").remove();
+            $(".show").remove();
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '');
+            $(id).hide();
         }
     </script>
 

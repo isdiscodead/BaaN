@@ -5,6 +5,7 @@
     $(document).ready(function() {
         load_bookmark();
         load_todo();
+        load_memo();
     });
 </script>
 
@@ -40,7 +41,7 @@
                 <div id="todo">
                     <a href="{% url 'todoapp:list' %}">todo</a>
                 </div>
-                <div class="link_box">
+                <div id="memo">
                     <a href="{% url 'memoapp:list' %}">memo</a>
                 </div>
                 <div class="link_box">
