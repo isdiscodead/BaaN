@@ -1,27 +1,10 @@
 {% include 'base.html' %}
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
-    function load_bookmark() {
-        $.ajax({
-            type: 'GET',
-            url: '/bookmarks/list/',
+<script src='/static/main_ajax_scripts.js'></script>
 
-            // 통신 성공
-            success: function(result){
-                $('#bookmark').html(result);
-                // document.getElementById("bookmark").innerHTML(result);
-            },
-
-            // 통신 실패
-            error: function(result) {
-                alert("error!");
-            }
-        });
-    }
-</script>
 <script type="text/javascript">
     $(document).ready(function() {
         load_bookmark();
+        load_todo();
     });
 </script>
 
@@ -49,14 +32,12 @@
             </div>
     </header>
 
-{#밑 내용#}
     <div class="main" >
         <div >
             <div class="link_flex_box">
-                <div class="" id="bookmark">
-                    <a href="{% url 'bookmarkapp:list' %}">bookmark</a>
+                <div id="bookmark">
                 </div>
-                <div class="link_box">
+                <div id="todo">
                     <a href="{% url 'todoapp:list' %}">todo</a>
                 </div>
                 <div class="link_box">

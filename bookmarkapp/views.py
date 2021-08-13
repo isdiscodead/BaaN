@@ -60,7 +60,7 @@ def bookmark_create(request):
         # URL is NOT valid here.
         print(exception)
 
-    return HttpResponseRedirect(reverse('bookmarkapp:list'))
+    return HttpResponseRedirect(reverse('home'))
 
 
 @login_required(login_url='/accounts/login/')
@@ -68,7 +68,7 @@ def bookmark_delete(request, pk):
     bookmark = Bookmark.objects.get(pk=pk)
     if bookmark.user == request.user:
         bookmark.delete()
-        return HttpResponseRedirect(reverse('bookmarkapp:list'))
+        return HttpResponseRedirect(reverse('home'))
 
 
 @login_required(login_url='/accounts/login/')
@@ -101,4 +101,4 @@ def bookmark_update(request, pk):
         # URL is NOT valid here.
         print(exception)
 
-    return HttpResponseRedirect(reverse('bookmarkapp:list'))
+    return HttpResponseRedirect(reverse('home'))
