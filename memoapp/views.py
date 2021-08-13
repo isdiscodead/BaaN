@@ -5,7 +5,6 @@ from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, ListView, UpdateView, CreateView
 from django.views.generic.edit import FormMixin
-from multi_form_view import MultiModelFormView
 
 from memoapp.forms import MemoForm
 from memoapp.models import Memo
@@ -18,24 +17,6 @@ from memoapp.models import Memo
 #         user = request.user
 #         return redirect("home")
 #     return render(request, "memoapp/create.html", {"form": form})
-
-
-
-class MultipleFormsMemoView(MultiModelFormView):
-    template_name = 'memoapp/create.html'
-    form_classes = {'create' : MemoForm,
-                    'update' : MemoForm,
-                    }
-
-    success_urls = {
-        'create' : HttpResponseRedirect(reverse('memoapp:list')),
-        'update' : HttpResponseRedirect(reverse('memoapp:list')),
-    }
-    def create_form_valid(self, form):
-        return HttpResponseRedirect(self.get_success_url(MemoForm))
-
-    def update_form_valid(self, form):
-        return HttpResponseRedirect(self.get_success_url(MemoForm))
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), 'get')
@@ -76,14 +57,14 @@ class MemoDetailView(DetailView, FormMixin):
         return reverse('memoapp:list')
 
 
-@method_decorator(login_required(login_url='/accounts/login/'), 'get')
-class MemoUpdateView(UpdateView, FormMixin):
-    model = Memo
-    context_object_name = 'target_memo'
-    form_class = MemoForm
-
-    def get_success_url(self):
-        return reverse('memoapp:list')
+# @method_decorator(login_required(login_url='/accounts/login/'), 'get')
+# class MemoUpdateView(UpdateView, FormMixin):
+#     model = Memo
+#     context_object_name = 'target_memo'
+#     form_class = MemoForm
+#
+#     def get_success_url(self):
+#         return reverse('memoapp:list')
 
 @login_required(login_url='/accounts/login/')
 def memo_delete(request, pk):

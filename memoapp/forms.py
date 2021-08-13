@@ -12,16 +12,16 @@ class MemoForm(forms.ModelForm):
             'content' : SummernoteWidget(),
         }
 
-class MultipleForm(forms.Form):
-    action = forms.CharField(max_length=60, widget=forms.HiddenInput())
-
-
-class CreateForm(MultipleForm):
-    title = forms.CharField(max_length=10, null=True)
-    content = forms.TextField()
-    created_at = forms.DateField(auto_now=True)
-
-class UpdateForm(MultipleForm):
-    title = forms.CharField(max_length=10, null=True)
-    content = forms.TextField()
-    created_at = forms.DateField(auto_now=True)
+# class MultipleForm(forms.Form):
+#     action = forms.CharField(max_length=60, widget=forms.HiddenInput())
+#
+#
+# class CreateForm(MultipleForm):
+#     title = forms.CharField(max_length=10, null=True)
+#     content = forms.TextField()
+#     created_at = forms.DateField(auto_now=True)
+#
+# class UpdateForm(MultipleForm):
+#     title = forms.CharField(max_length=10, null=True)
+#     content = forms.TextField()
+#     created_at = forms.DateField(auto_now=True)

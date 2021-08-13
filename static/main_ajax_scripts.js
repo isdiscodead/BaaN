@@ -64,4 +64,23 @@ function load_todo() {
     });
 }
 
+// 메모앱
+function load_memo() {
+    $.ajax({
+        type: 'GET',
+        url: '/memos/list/',
+
+        // 통신 성공
+        success: function(result){
+            $('#memo').html(result);
+            // document.getElementById("bookmark").innerHTML(result);
+        },
+
+        // 통신 실패
+        error: function(result) {
+            alert("error!");
+        }
+    });
+}
+
 
