@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <div id="delete_modal{{ bookmark.pk }}" class="modal fade modal_box_div" role="dialog" data-backdrop="false">
+        <div id="delete_modal{{ bookmark.pk }}" class="modal fade modal_box_div" role="dialog" data-backdrop="false" style="display: none;">
             <div role="document">
                         <h4>delete bookmark</h4>
                         <hr>
@@ -24,12 +24,12 @@
                     <hr>
                     <div>
                         <button onclick="delete_modal({{ bookmark.pk }})" type="button" class="btn btn-dark">delete</button>
-                        <button type="button" class="btn btn-light" data-dismiss="modal">cancel</button>
+                        <button type="button" class="btn btn-light" data-dismiss="modal" onclick="hideModal('delete_modal({{ bookmark.pk }})')">cancel</button>
                     </div>
             </div>
         </div>
 
-        <div id="bookmark_update{{ bookmark.pk }}" class="modal fade modal_box_div" role="dialog" data-backdrop="false">
+        <div id="bookmark_update{{ bookmark.pk }}" class="modal fade modal_box_div" role="dialog" data-backdrop="false" style="display: none;">
             <div role="document">
                 <h4>edit bookmark</h4>
                 <hr>
@@ -39,13 +39,13 @@
                     <input type="text" id="url" name="url" placeholder="*input url*" value="{{ bookmark.url }}">
                     <hr>
                     <input type="submit" class="btn btn-primary" value="apply">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+                    <button type="button" class="btn btn-default" onclick="hideModal('bookmark_update{{ bookmark.pk }}')">cancel</button>
                 </form>
             </div>
         </div>
         {% endfor %}
 
-        <div id="bookmark_add" class="modal fade modal_box_div" role="dialog" data-backdrop="false">
+        <div id="bookmark_add" class="modal fade modal_box_div" role="dialog" data-backdrop="false" style="display: none;">
             <div role="document">
 
                 <h4>add new bookmark</h4>
@@ -57,7 +57,7 @@
                     <input type="text" class="input" name="url" placeholder="*input url*">
                     <hr>
                     <input type="submit" class="btn btn-primary" value="add">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+                    <button type="button" class="btn btn-default" onclick="hideModal('bookmark_add')">cancel</button>
                 </form>
             </div>
         </div>
@@ -71,5 +71,14 @@
         function delete_modal( pk ) {
             location.replace('/bookmarks/delete/'+pk);
             alert('deleting completed');
+        }
+
+        function hideModal( id ) {
+            $(id).removeClass("in");
+            $(".modal-backdrop").remove();
+            $(".show").remove();
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right', '');
+            $(id).hide();
         }
     </script>
