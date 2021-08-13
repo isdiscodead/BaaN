@@ -19,23 +19,22 @@ from memoapp.models import Memo
 #     return render(request, "memoapp/create.html", {"form": form})
 
 
-@method_decorator(login_required(login_url='/accounts/login/'), 'get')
-@method_decorator(login_required(login_url='/accounts/login/'), 'post')
+# @method_decorator(login_required(login_url='/accounts/login/'), 'get')
+# @method_decorator(login_required(login_url='/accounts/login/'), 'post')
 
 class MemoCreateView(CreateView):
     model = Memo
     form_class = MemoForm
     template_name = 'memoapp/create.html'
 
-    # def form_valid(self, form):
-    #     temp_memo = form.save(commit=False)
-    #     temp_memo.user = self.request.user
-    #     temp_memo.save()
-    #     return super().form_valid(form)
+    def form_valid(self, form):
+        temp_memo = form.save(commit=False)
+        temp_memo.user = self.request.user
+        temp_memo.save()
+        return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('memoapp:list')
-
+        return reverse('memoapp:list', kwargs={'pk':self.object.pk})
 
 class MemoUpdateView(UpdateView):
     model = Memo
@@ -43,7 +42,7 @@ class MemoUpdateView(UpdateView):
     template_name = 'memoapp/create.html'
 
     def get_success_url(self):
-        return reverse('memoapp:list')
+        return reverse('memoapp:list', kwargs={'pk':self.object.pk})
 
 class MemoListView(ListView, FormMixin):
     model = Memo
@@ -57,34 +56,19 @@ def memo_delete(request, pk):
     memo.delete()
     return HttpResponseRedirect(reverse('memoapp:list'))
 
+# class MemoDetailView(DetailView, FormMixin):
+#     model = Memo
+#     form_class = MemoForm
+#     context_object_name = 'target_memo'
+
 def memo_detail(request, pk):
     memo = Memo.objects.get(pk=pk)
-
     return HttpResponseRedirect(reverse('memoapp:list'))
 
-# class MemoDetailView(DetailView):
-#     model = Memo
-#     form_class = MemoForm
-#     context_object_name = 'target_memo'
+class MemoUpdateView(UpdateView, FormMixin):
+    model = Memo
+    context_object_name = 'target_memo'
+    form_class = MemoForm
 
-def memo_update(request):
-    form = MemoForm(request.POST)
-    if form.is_valid():
-        title = request.POST.get('title')
-        content = request.POST.get('content')
-        user = request.user
-        new_memo = Memo.objects.get(pk=pk)
-
-        new_memo.title = title
-        new_memo.content = content
-
-        return redirect("home")
-    return render(request, "memoapp/create.html", {"form": form})
-
-# class MemoUpdateView(UpdateView):
-#     model = Memo
-#     context_object_name = 'target_memo'
-#     form_class = MemoForm
-#
-#     def get_success_url(self):
-#         return reverse('memoapp:detail', kwargs={'pk': self.object.pk})
+    def get_success_url(self):
+        return reverse('memoapp:list')
