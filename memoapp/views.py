@@ -33,8 +33,9 @@ class MemoCreateView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('memoapp:list', kwargs={'pk':self.object.pk})
+        # return reverse('memoapp:list', kwargs={'pk':self.object.pk})
         # return HttpResponseRedirect(reverse('memoapp:list'))
+        return reverse('home')
 
 
 @method_decorator(login_required(login_url='/accounts/login/'), 'get')
