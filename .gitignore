@@ -87,5 +87,5 @@ __pycache__/
 media/
 
 Dockerfile
-
 nginx.conf
+docker-compose.yml
