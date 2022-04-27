@@ -6,4 +6,4 @@
 
 ---
 
-[노션 포트폴리오](https://isdiscodead.notion.site/BaaN-c3683df55fcc45a992ea340be9127040
+[![노션 포트폴리오]](https://isdiscodead.notion.site/BaaN-c3683df55fcc45a992ea340be9127040
